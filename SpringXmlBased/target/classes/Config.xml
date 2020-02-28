@@ -1,0 +1,45 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- setter injection -->
+	<bean id="company" class="org.demo.model.Company">
+		<property name="id" value="1" />
+		<property name="name" value="XYZ" />
+		<property name="address" ref="AddressBean" /><!-- ref attribute to refer other bean definition -->
+		<property name="departments">
+			<list>
+				<ref bean="development" />
+				<ref bean="sales" />
+				<ref bean="hr" />
+			</list>
+		</property>
+
+	</bean>
+
+	<!-- constructor injection passing constructor parameters on the basis of 
+		type -->
+	<bean id="AddressBean" class="org.demo.model.Address">
+		<constructor-arg value="11" type="java.lang.Long"></constructor-arg>
+		<constructor-arg value="Pune" type="java.lang.String"></constructor-arg>
+		<constructor-arg value="12345" type="java.lang.Long"></constructor-arg>
+	</bean>
+
+	<!-- setter injection -->
+	<bean id="development" class="org.demo.model.Department">
+		<property name="id" value="101" />
+		<property name="name" value="development" />
+	</bean>
+	<!-- setter injection -->
+	<bean id="sales" class="org.demo.model.Department">
+		<property name="id" value="102" />
+		<property name="name" value="sales" />
+	</bean>
+	<!-- constructor injection passing constructor parameters on the basis of 
+		index -->
+	<bean id="hr" class="org.demo.model.Department">
+		<constructor-arg value="103" index="0"></constructor-arg>
+		<constructor-arg value="hr" index="1"></constructor-arg>
+	</bean>
+</beans>
