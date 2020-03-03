@@ -1,1 +1,5 @@
+org\demo\model\Company.class
 org\demo\App.class
+org\demo\model\Department.class
+org\demo\common\BaseEntity.class
+org\demo\model\Address.class
